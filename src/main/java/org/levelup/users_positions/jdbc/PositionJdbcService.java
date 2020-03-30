@@ -12,12 +12,13 @@ public class PositionJdbcService implements PositionService {
 
     public Position createPosition(String name) throws SQLException {
 
-        Connection connection = JdbcUtils.getConnection();
-        PreparedStatement statement = connection.prepareStatement("insert into positions (name) values (?)");
-        statement.setString(1, name);
-        int rowChanged = statement.executeUpdate();
-        System.out.println(rowChanged + " position(s) have been added");
-        return findPositionByName(name);
+        try (Connection connection = JdbcUtils.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("insert into positions (name) values (?)");
+            statement.setString(1, name);
+            int rowChanged = statement.executeUpdate();
+            System.out.println(rowChanged + " position(s) have been added");
+            return findPositionByName(name);
+        }
     }
 
     public void deletePositionById(int id) throws SQLException {
@@ -26,7 +27,7 @@ public class PositionJdbcService implements PositionService {
             PreparedStatement statement = connection.prepareStatement("delete from positions where id = ?");
             statement.setInt(1, id);
             int rowDeleted = statement.executeUpdate();
-            System.out.println(rowDeleted +" position(s) have been deleted");
+            System.out.println(rowDeleted + " position(s) have been deleted");
         }
     }
 
@@ -55,8 +56,9 @@ public class PositionJdbcService implements PositionService {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
+            int positionId = resultSet.getInt("id");
             String positionName = resultSet.getString("name");
-            return new Position(id, positionName);
+            return new Position(positionId, positionName);
         }
     }
 
@@ -83,10 +85,10 @@ public class PositionJdbcService implements PositionService {
         try (Connection connection = JdbcUtils.getConnection()) {
             PreparedStatement selectStatement = connection.prepareStatement("select * from positions where name = ?");
             selectStatement.setString(1, name);
-            ResultSet resultset = selectStatement.executeQuery();
-            resultset.next();
-            int id = resultset.getInt("id");
-            String positionName = resultset.getString("name");
+            ResultSet resultSet = selectStatement.executeQuery();
+            resultSet.next();
+            int id = resultSet.getInt("id");
+            String positionName = resultSet.getString("name");
             return new Position(id, positionName);
         }
     }
