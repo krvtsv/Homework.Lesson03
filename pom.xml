@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.levelup.java2</groupId>
-    <artifactId>application</artifactId>
+    <artifactId>Homework.Lesson3</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>

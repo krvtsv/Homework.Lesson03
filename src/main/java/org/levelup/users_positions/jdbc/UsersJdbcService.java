@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class UsersJdbcService implements UserService {
     public User createUser(String passport, String name, String lastName) throws SQLException {
@@ -27,24 +29,32 @@ public class UsersJdbcService implements UserService {
         try (Connection connection = JdbcUtils.getConnection()) {
             PreparedStatement selectStatement = connection.prepareStatement("select * from users where passport = ?");
             selectStatement.setString(1, passport);
-            return getUser(selectStatement);
+            ResultSet resultSet = selectStatement.executeQuery();
+            resultSet.next();
+            int id = resultSet.getInt("id");
+            String userName = resultSet.getString("name");
+            String userLastName = resultSet.getString("last_name");
+            String userPassport = resultSet.getString("passport");
+            return new User(id, userName, userLastName, userPassport);
         }
     }
 
-    public User findByNameAndLastName(String name, String lastName) throws SQLException {
+    public Collection<User> findByNameAndLastName(String name, String lastName) throws SQLException {
         try (Connection connection = JdbcUtils.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from users where name = ? and last_name = ?");
             statement.setString(1, name);
             statement.setString(2, lastName);
-            return getUser(statement);
+            ResultSet resultSet = statement.executeQuery();
+            return extractUsers(resultSet);
         }
     }
 
-    public User findByLastName(String lastName) throws SQLException {
+    public Collection<User> findByLastName(String lastName) throws SQLException {
         try (Connection connection = JdbcUtils.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from users where last_name = ?");
             statement.setString(1, lastName);
-            return getUser(statement);
+            ResultSet resultSet = statement.executeQuery();
+            return extractUsers(resultSet);
         }
     }
 
@@ -69,13 +79,15 @@ public class UsersJdbcService implements UserService {
             return findByPassport(passport);
     }}
 
-    private User getUser(PreparedStatement statement) throws SQLException {
-        ResultSet resultSet = statement.executeQuery();
-        resultSet.next();
-        int id = resultSet.getInt("id");
-        String userName = resultSet.getString("name");
-        String userLastName = resultSet.getString("last_name");
-        String userPassport = resultSet.getString("passport");
-        return new User(id, userName, userLastName, userPassport);
+    private Collection<User> extractUsers(ResultSet resultSet) throws SQLException {
+        Collection<User> users = new ArrayList<>();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String userName = resultSet.getString("name");
+            String userLastName = resultSet.getString("last_name");
+            String userPassport = resultSet.getString("passport");
+            users.add(new User(id, userName, userLastName, userPassport));
+        }
+        return users;
     }
 }
