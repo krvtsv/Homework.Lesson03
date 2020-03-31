@@ -40,7 +40,7 @@ public class TestApplication {
         // test User Service
         UsersJdbcService userService = new UsersJdbcService();
 
-        System.out.println(userService.createUser("7895 097654","Kolya","Nikolaev"));
+        System.out.println(userService.createUser("7895 097654","Svetlana","Kozlova"));
 
         System.out.println(userService.findByPassport("6785 383624"));
 
