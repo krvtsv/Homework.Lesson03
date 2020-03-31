@@ -1,4 +1,4 @@
-package org.levelup.users_positions.domain;
+package org.levelup.Lesson3.domain;
 
 public class User {
     private int id;

@@ -1,9 +1,10 @@
-package org.levelup.users_positions;
+package org.levelup.Lesson3;
 
 
-import org.levelup.users_positions.domain.Position;
-import org.levelup.users_positions.jdbc.PositionJdbcService;
-import org.levelup.users_positions.jdbc.UsersJdbcService;
+import org.levelup.Lesson3.jdbc.PositionJdbcService;
+import org.levelup.Lesson3.domain.Position;
+import org.levelup.Lesson3.jdbc.PositionJdbcService;
+import org.levelup.Lesson3.jdbc.UsersJdbcService;
 
 
 import java.sql.SQLException;
