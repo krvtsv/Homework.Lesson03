@@ -1,7 +1,7 @@
-package org.levelup.Lesson3.jdbc;
+package org.levelup.Lesson3_Lesson5.jdbc;
 
-import org.levelup.Lesson3.domain.Position;
-import org.levelup.Lesson3.domain.PositionService;
+import org.levelup.Lesson3_Lesson5.domain.Position;
+import org.levelup.Lesson3_Lesson5.domain.PositionService;
 
 
 import java.sql.*;

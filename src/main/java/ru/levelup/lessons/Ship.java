@@ -16,7 +16,7 @@ public class Ship {
     public String toString() {
         return "Ship{" +
                 "type='" + type + '\'' +
-                ", isWarship=" + capacity +
+                ", capacity=" + capacity +
                 ", speed=" + speed +
                 '}';
     }

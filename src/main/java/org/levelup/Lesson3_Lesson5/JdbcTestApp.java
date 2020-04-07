@@ -1,16 +1,15 @@
-package org.levelup.Lesson3;
+package org.levelup.Lesson3_Lesson5;
 
 
-import org.levelup.Lesson3.jdbc.PositionJdbcService;
-import org.levelup.Lesson3.domain.Position;
-import org.levelup.Lesson3.jdbc.PositionJdbcService;
-import org.levelup.Lesson3.jdbc.UsersJdbcService;
+import org.levelup.Lesson3_Lesson5.jdbc.PositionJdbcService;
+import org.levelup.Lesson3_Lesson5.domain.Position;
+import org.levelup.Lesson3_Lesson5.jdbc.UsersJdbcService;
 
 
 import java.sql.SQLException;
 import java.util.Collection;
 
-public class TestApplication {
+public class JdbcTestApp {
 
     public static void main(String[] args) throws SQLException {
 
@@ -39,7 +38,7 @@ public class TestApplication {
 
 
         // test User Service
-        UsersJdbcService userService = new UsersJdbcService();
+       UsersJdbcService userService = new UsersJdbcService();
 
         System.out.println(userService.createUser("7895 097654","Svetlana","Kozlova"));
 

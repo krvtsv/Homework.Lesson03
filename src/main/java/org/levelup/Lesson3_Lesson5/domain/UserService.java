@@ -1,4 +1,4 @@
-package org.levelup.Lesson3.domain;
+package org.levelup.Lesson3_Lesson5.domain;
 
 import java.sql.SQLException;
 import java.util.Collection;

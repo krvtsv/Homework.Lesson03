@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.levelup.java2</groupId>
-    <artifactId>Homework.Lesson3</artifactId>
+    <artifactId>application</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -14,6 +14,14 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.11</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.13.Final</version>
+        </dependency>
+
+
     </dependencies>
     <properties>
         <java.version>1.8</java.version>

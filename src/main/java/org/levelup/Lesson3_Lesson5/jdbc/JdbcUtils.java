@@ -1,4 +1,4 @@
-package org.levelup.Lesson3.jdbc;
+package org.levelup.Lesson3_Lesson5.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

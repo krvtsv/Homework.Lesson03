@@ -1,8 +1,7 @@
-package org.levelup.Lesson3.jdbc;
+package org.levelup.Lesson3_Lesson5.jdbc;
 
-import org.levelup.Lesson3.domain.Position;
-import org.levelup.Lesson3.domain.User;
-import org.levelup.Lesson3.domain.UserService;
+import org.levelup.Lesson3_Lesson5.domain.User;
+import org.levelup.Lesson3_Lesson5.domain.UserService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
