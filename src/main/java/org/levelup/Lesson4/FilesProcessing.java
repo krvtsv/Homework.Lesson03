@@ -13,6 +13,7 @@ public class FilesProcessing {
         for (Class aClass : classes) {
             if (aClass.getSuperclass() == Object.class) {
                 Object o = aClass.newInstance();
+                RandomIntAnnotationProcess.process(o);
                 System.out.println(o);
             }
         }

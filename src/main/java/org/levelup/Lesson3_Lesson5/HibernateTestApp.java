@@ -40,12 +40,12 @@ public class HibernateTestApp {
 
         // test User Service
 
-        System.out.println(userService.createUser("7895 097654","Svetlana","Kozlova"));
+        System.out.println(userService.createUser("7895 097654", "Svetlana", "Kozlova"));
 
         System.out.println(userService.findByPassport("6785 383624"));
 
         System.out.println(userService.findByLastName("Kozlova"));
-        System.out.println(userService.findByNameAndLastName("Oleg","Olegov"));
+        System.out.println(userService.findByNameAndLastName("Oleg", "Olegov"));
 
         System.out.println(userService.updateUser("0972 445672", "Ivan", "Ivanov"));
 
